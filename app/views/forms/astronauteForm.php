@@ -47,10 +47,7 @@ include '../header.php';
         </div>
         <!-- /.row -->
       </div><!-- /.container-fluid -->
-    
-
     <!-- terminer ici-->
-
 </body>
 </html>
 

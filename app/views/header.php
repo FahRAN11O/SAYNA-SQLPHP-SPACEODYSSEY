@@ -1,6 +1,8 @@
 <?php
 $pathToApp = realpath(__DIR__ . '/../../config/app.php');
 // Incluez le fichier en utilisant le chemin absolu
+//../../www/plugins/fontawesome-free/css/all.min.css
+//../../www/dist/css/adminlte.min.css
 include $pathToApp;
 ?>
 
@@ -18,9 +20,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="../../../www/plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="<?=$pathAllmin?>">
   <!-- Theme style -->
-  <link rel="stylesheet" href="../../../www/dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="<?=$pathAdminlte?>">
 </head>
 <body class="hold-transition layout-top-nav">
 
