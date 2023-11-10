@@ -1,5 +1,6 @@
 <?php
-include('../header.php');
+// Incluez le fichier en utilisant le chemin absolu
+include '../header.php';
 ?>
       <div class="container-fluid">
         <div class="row">
@@ -15,11 +16,11 @@ include('../header.php');
               <form id="quickForm" novalidate="novalidate">
                 <div class="card-body">
                   <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" name="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                    <label for="exampleInputEmail1">Mission</label>
+                    <input type="text" name="nom" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
                   </div>
                   <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
+                    <label for="exampleInputPassword1">test</label>
                     <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
                   </div>
                   <div class="form-group mb-0">
@@ -47,3 +48,9 @@ include('../header.php');
         <!-- /.row -->
       </div><!-- /.container-fluid -->
     
+
+    <!-- terminer ici-->
+
+</body>
+</html>
+
