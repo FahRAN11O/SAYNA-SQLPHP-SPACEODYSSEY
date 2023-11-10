@@ -32,9 +32,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
     <div class="container">
       <a href="/" class="navbar-brand">
-        <img src="img/logo-sayna.png" alt="Todo list" class="brand-image img-circle elevation-3" style="opacity: .8">
+        <img src="./img/logo-sayna.png" alt="Todo list" class="brand-image img-circle elevation-3" style="opacity: .8">
       </a>
-
+      <a href="/StellarTech/www/">Accueil</a>
+      <a href="/StellarTech/app/views/missionView.php">Mission</a>
       <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
