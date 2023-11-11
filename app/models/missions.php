@@ -80,6 +80,24 @@ class Missions{
     }
 
     }
+
+    public function allMissions(){
+        require('../../config/connexion.php');
+        try{  
+            $requete = "SELECT * FROM missions;";
+            $statement = $pdo->prepare($requete);
+    
+            //Executez la requête
+            $statement->execute();
+    
+            $allMission = $statement->fetchAll(PDO::FETCH_ASSOC);
+            return $allMission;
+    
+        }catch(PDOException $e){
+            //En cas d'erreur de connexion, affichage du message d'erreur
+            echo 'Erreur de connexion : '. $e->getMessage();
+        }
+    }
 }
 
 ?>

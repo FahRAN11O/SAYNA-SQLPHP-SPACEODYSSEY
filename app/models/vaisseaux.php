@@ -50,7 +50,7 @@ class Vaisseaux{
     }
 
     public function allVaisseaux(){
-        require('../../../config/connexion.php');
+    require('../../../config/connexion.php');
     try{  
         $requete = "SELECT * FROM vaisseaux;";
         $statement = $pdo->prepare($requete);
