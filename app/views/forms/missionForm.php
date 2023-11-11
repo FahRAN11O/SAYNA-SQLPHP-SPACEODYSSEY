@@ -18,26 +18,26 @@ require_once('../../models/vaisseaux.php');
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form id="quickForm" novalidate="novalidate">
+              <form id="quickForm" novalidate="novalidate" method="POST" action="../../controllers/missionController.php">
                 <div class="card-body">
                   <div class="form-group">
                     <label for="exampleInputEmail1">Mission</label>
-                    <input type="text" name="nom" class="form-control" id="exampleInputEmail1" placeholder="Entre le nom">
+                    <input type="text" name="nomMission" class="form-control" id="exampleInputEmail1" placeholder="Entre le nom">
                   </div>
 
                   <div class="form-group">
                     <label for="exampleInputEmail1">Objectif</label>
-                    <input type="text" name="nom" class="form-control" id="exampleInputEmail1" placeholder="L'objectif du mission">
+                    <input type="text" name="objectifMission" class="form-control" id="exampleInputEmail1" placeholder="L'objectif du mission">
                   </div>
 
                   <div class="form-group">
                     <label for="exampleInputPassword1">Nombre Astronautes:</label>
-                    <input type="number" name="nbreAstro" class="form-control" id="exampleInputEmail1" placeholder="Nombre des Astronautes">
+                    <input type="number" name="nombreAstro" class="form-control" id="exampleInputEmail1" placeholder="Nombre des Astronautes">
                   </div>
 
                   <div class="form-group">
                     <label for="exampleInputPassword1">Vaisseaux:</label>
-                    <select name="" id="">
+                    <select name="vaisseauMission" id="">
                       <?php
                         $vaisseaux = new Vaisseaux();
                         $vaisseauxList = $vaisseaux->allVaisseaux();
@@ -52,17 +52,17 @@ require_once('../../models/vaisseaux.php');
 
                   <div class="form-group">
                     <label for="exampleInputPassword1">Debut</label>
-                    <input class="form-control" type="date" id="data" name="data" placeholder="Date de Debut" required>
+                    <input class="form-control" type="date" id="data" name="dateDebut" placeholder="Date de Debut" required>
                   </div>
 
                   <div class="form-group">
                     <label for="exampleInputPassword1">Fin</label>
-                    <input class="form-control" type="date" id="data" name="data" placeholder="Date de fin" required>
+                    <input class="form-control" type="date" id="data" name="dateFin" placeholder="Date de fin" required>
                   </div>
 
                   <div class="form-group">
                     <label for="exampleInputPassword1">Status:</label> 
-                    <select name="" id="">
+                    <select name="status" id="">
                       <option value="debut">Debut</option>
                       <option value="encours">En cours</option>
                       <option value="fini">Fini</option>

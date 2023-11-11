@@ -66,7 +66,20 @@ class Missions{
         $this->planete=$planete;
     }
 
+    public function creerMission($nomMission, $objectif, $vaisseau, $dateDebut, $dateFin, $status){
+    try{
+        require('../../config/connexion.php');
+       
+       $query = "INSERT INTO missions (nom, objectif, vaisseau_id, date_debut, date_fin,status_mission ) 
+        VALUES ('$nomMission','$objectif','$vaisseau','$dateDebut','$dateFin','$status');";
 
+        $pdo->query($query);
+    }catch(PDOException $e){
+        //En cas d'erreur de connexion, affichage du message d'erreur
+        echo 'Erreur de connexion : '. $e->getMessage();
+    }
+
+    }
 }
 
 ?>
