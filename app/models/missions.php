@@ -11,6 +11,25 @@ class Missions{
 
     //Getter et setter pour chaque variables (attributs)
 
+    public function getId($nomMission, $objectif){
+        require('../../config/connexion.php');
+        try{  
+            $requete = "SELECT id FROM missions WHERE nom = '$nomMission' && objectif='$objectif';";
+            $statement = $pdo->prepare($requete);
+    
+            //Executez la requête
+            $statement->execute();
+    
+            $id = $statement->fetchAll(PDO::FETCH_ASSOC);
+            return $id;
+            $statement->close();
+    
+        }catch(PDOException $e){
+            //En cas d'erreur de connexion, affichage du message d'erreur
+            echo 'Erreur de connexion : '. $e->getMessage();
+        }
+    }
+
     public function getNom(){
         return $this->nom;
     }

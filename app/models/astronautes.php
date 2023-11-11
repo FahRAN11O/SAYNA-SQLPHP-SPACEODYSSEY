@@ -67,5 +67,26 @@ class Astronautes{
     public function setMission($mission){
         $this->mission=$mission;
     }
+
+    public function ajouterAstronaute($nom, $prenom, $dateNaissance,
+                                    $anneeService, $nationalite, $etatSante,
+                                    $taille, $poids, $missionId){
+        try{
+            require('../../config/connexion.php');
+           
+           $query = "INSERT INTO astronautes (nom, prenom, date_naissance,
+                                     annee_service, nationalite, etat_sante,
+                                     taille,poids, mission_id) 
+            VALUES ('$nom','$prenom','$dateNaissance',
+                    '$anneeService','$nationalite','$etatSante',
+                    '$taille','$poids','$missionId');";
+    
+            $pdo->query($query);
+        }catch(PDOException $e){
+            //En cas d'erreur de connexion, affichage du message d'erreur
+            echo 'Erreur de connexion : '. $e->getMessage();
+        }
+    
+        }
 }
 ?>

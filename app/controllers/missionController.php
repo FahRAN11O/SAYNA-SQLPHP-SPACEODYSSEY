@@ -1,12 +1,13 @@
 <?php
 require_once('../models/missions.php');
+
     // Incluez le fichier en utilisant le chemin absolu
 $pathAllmin = /*realpath(__DIR__ . */'../../www/plugins/fontawesome-free/css/all.min.css'/*)*/;
 $pathAdminlte = /*realpath(__DIR__ . */'../../www/dist/css/adminlte.min.css'/*)*/;
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Récupérer les valeurs depuis le formulaire
-        //$id = $_POST["id"];
+        $missionInstance = new Missions();
         $nom = $_POST["nomMission"];
         $objectif = $_POST["objectifMission"];
         $nombreAstro=$_POST["nombreAstro"];
@@ -15,9 +16,14 @@ $pathAdminlte = /*realpath(__DIR__ . */'../../www/dist/css/adminlte.min.css'/*)*
         $dateFin = $_POST["dateFin"];
         $status = $_POST["status"];
 
+
+        $idMissionKey=$missionInstance->getId($nom, $objectif);
+        foreach ($idMissionKey as $missionKey) {
+            $id = $missionKey["id"];
+          }
         $mission = new Missions();
         $mission->creerMission($nom, $objectif, $vaisseau, $dateDebut, $dateFin, $status);
-        
+
 
 
     include '../views/header.php';
@@ -90,7 +96,7 @@ $pathAdminlte = /*realpath(__DIR__ . */'../../www/dist/css/adminlte.min.css'/*)*
 
                   <div class="form-group">
                     <label for="exampleInputPassword1">Mission:'.$nom.'</label>
-                    <input type="text" name="mission_id" class="form-control" id="exampleInputEmail1" placeholder="mission_id" value="" hidden>
+                    <input type="text" name="mission_id" class="form-control" id="exampleInputEmail1" placeholder="mission_id" value="'.$id.'" >
 
                   </div>
 
