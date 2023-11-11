@@ -30,17 +30,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
-    <div class="container">
+    <div class="container" >
+
+    <div >
       <a href="/" class="navbar-brand">
-        <img src="./img/logo-sayna.png" alt="Todo list" class="brand-image img-circle elevation-3" style="opacity: .8">
+        <img src="./img/logo-sayna.png" alt="Sayna StellarTech" class="brand-image img-circle elevation-3" style="opacity: .8">
       </a>
       <a href="/StellarTech/www/">Accueil</a>
       <a href="/StellarTech/app/views/missionView.php">Mission</a>
-      <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse order-3" id="navbarCollapse">
+    </div>  
+    <div class="collapse navbar-collapse order-3" id="navbarCollapse">
         
 
       </div>
@@ -56,8 +55,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <div class="content-header">
       <div class="container">
         <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1 class="m-0"><?=APP_NAME?></h1>
+          <div class="col-sm-10" >
+            <h1 class="m-0"><?=APP_NAME?>:<small>a project consist for exploring the space.</small></h1>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->

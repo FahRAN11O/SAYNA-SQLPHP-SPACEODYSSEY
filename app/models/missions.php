@@ -74,6 +74,7 @@ class Missions{
         VALUES ('$nomMission','$objectif','$vaisseau','$dateDebut','$dateFin','$status');";
 
         $pdo->query($query);
+        $pdo->close();
     }catch(PDOException $e){
         //En cas d'erreur de connexion, affichage du message d'erreur
         echo 'Erreur de connexion : '. $e->getMessage();
@@ -92,6 +93,7 @@ class Missions{
     
             $allMission = $statement->fetchAll(PDO::FETCH_ASSOC);
             return $allMission;
+            $pdo->close();
     
         }catch(PDOException $e){
             //En cas d'erreur de connexion, affichage du message d'erreur

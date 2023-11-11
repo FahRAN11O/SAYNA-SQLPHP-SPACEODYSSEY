@@ -19,7 +19,7 @@ include '../app/views/header.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NASA APOD Dashboard</title>
     <style>
-        /* Ajoutez du CSS pour rendre votre dashboard attrayante */
+        /* Ajout du CSS */
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
