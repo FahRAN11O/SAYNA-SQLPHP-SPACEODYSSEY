@@ -1,6 +1,11 @@
 <?php
 // Incluez le fichier en utilisant le chemin absolu
+$pathAllmin = /*realpath(__DIR__ . */'../../../www/plugins/fontawesome-free/css/all.min.css'/*)*/;
+$pathAdminlte = /*realpath(__DIR__ . */'../../../www/dist/css/adminlte.min.css'/*)*/;
+
 include '../header.php';
+
+require_once('../../models/vaisseaux.php');
 ?>
       <div class="container-fluid">
         <div class="row">
@@ -9,25 +14,25 @@ include '../header.php';
             <!-- jquery validation -->
             <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Quick Example <small>jQuery Validation</small></h3>
+                <h3 class="card-title">Ajouter Planete<!--<small>jQuery Validation</small>--></h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form id="quickForm" novalidate="novalidate">
+              <form id="quickForm" novalidate="novalidate" method="POST" action="../../controllers/missionController.php">
                 <div class="card-body">
                   <div class="form-group">
-                    <label for="exampleInputEmail1">Mission</label>
-                    <input type="text" name="nom" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                    <label for="exampleInputEmail1">Planete:</label>
+                    <input type="text" name="nomMission" class="form-control" id="exampleInputEmail1" placeholder="Entre le nom">
                   </div>
+
                   <div class="form-group">
-                    <label for="exampleInputPassword1">test</label>
-                    <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                    <label for="exampleInputEmail1">Circonference:</label>
+                    <input type="text" name="objectifMission" class="form-control" id="exampleInputEmail1" placeholder="L'objectif du mission">
                   </div>
-                  <div class="form-group mb-0">
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" name="terms" class="custom-control-input" id="exampleCheck1">
-                      <label class="custom-control-label" for="exampleCheck1">I agree to the <a href="#">terms of service</a>.</label>
-                    </div>
+
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Distance à la terre:</label>
+                    <input type="text" name="objectifMission" class="form-control" id="exampleInputEmail1" placeholder="L'objectif du mission">
                   </div>
                 </div>
                 <!-- /.card-body -->
@@ -47,8 +52,6 @@ include '../header.php';
         </div>
         <!-- /.row -->
       </div><!-- /.container-fluid -->
-    
-
     <!-- terminer ici-->
 
 </body>

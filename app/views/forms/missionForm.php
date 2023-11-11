@@ -63,10 +63,10 @@ require_once('../../models/vaisseaux.php');
                   <div class="form-group">
                     <label for="exampleInputPassword1">Status:</label> 
                     <select name="status" id="">
-                      <option value="debut">Debut</option>
-                      <option value="encours">En cours</option>
-                      <option value="fini">Fini</option>
-                      <option value="abandonne">Abandonné</option>
+                      <option value="Début">Debut</option>
+                      <option value="En cours">En cours</option>
+                      <option value="Fini">Fini</option>
+                      <option value="Abandonné">Abandonné</option>
                     </select>
                   </div>
 
