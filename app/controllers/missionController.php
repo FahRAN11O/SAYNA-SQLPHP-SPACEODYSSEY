@@ -48,32 +48,32 @@ $pathAdminlte = /*realpath(__DIR__ . */'../../www/dist/css/adminlte.min.css'/*)*
                 <div class="card-body">
                   <div class="form-group">
                     <label for="exampleInputEmail1">Nom:</label>
-                    <input type="text" name="nom" class="form-control" id="exampleInputEmail1" placeholder="Entre le nom">
+                    <input type="text" name="nom'.$i.'" class="form-control" id="exampleInputEmail1" placeholder="Entre le nom">
                   </div>
 
                   <div class="form-group">
                     <label for="exampleInputEmail1">Prenom(s):</label>
-                    <input type="text" name="prenom" class="form-control" id="exampleInputEmail1" placeholder="Prénom de l\'astro">
+                    <input type="text" name="prenom'.$i.'" class="form-control" id="exampleInputEmail1" placeholder="Prénom de l\'astro">
                   </div>
 
                   <div class="form-group">
                     <label for="exampleInputPassword1">Date de naissance</label>
-                    <input class="form-control" type="date" id="data" name="dateNaissance" placeholder="Date de naissance" required>
+                    <input class="form-control" type="date" id="data" name="dateNaissance'.$i.'" placeholder="Date de naissance" required>
                   </div>
 
                   <div class="form-group">
                   <label for="exampleInputPassword1">Année de service:</label>
-                  <input type="number" name="anneeService" class="form-control" id="exampleInputEmail1" placeholder="Annee de service">
+                  <input type="number" name="anneeService'.$i.'" class="form-control" id="exampleInputEmail1" placeholder="Annee de service">
                 </div>
 
                 <div class="form-group">
                     <label for="exampleInputEmail1">Nationalité:</label>
-                    <input type="text" name="nationalite" class="form-control" id="exampleInputEmail1" placeholder="Nationalité">
+                    <input type="text" name="nationalite'.$i.'" class="form-control" id="exampleInputEmail1" placeholder="Nationalité">
                   </div>
 
                 <div class="form-group">
                     <label for="exampleInputPassword1">Etat de santé:</label> 
-                    <select name="etatSante" id="">
+                    <select name="etatSante'.$i.'" id="">
                       <option value="Bien">bien</option>
                       <option value="Mal">mal</option>
                       <option value="Decédé">decédé</option>
@@ -83,21 +83,21 @@ $pathAdminlte = /*realpath(__DIR__ . */'../../www/dist/css/adminlte.min.css'/*)*
 
                   <div class="form-group">
                     <label for="exampleInputPassword1">taille (cm):</label>
-                    <input type="number" name="taille" class="form-control" id="exampleInputEmail1" placeholder="taille en cm">
+                    <input type="number" name="taille'.$i.'" class="form-control" id="exampleInputEmail1" placeholder="taille en cm">
                   </div>
 
                   
                 
                   <div class="form-group">
                     <label for="exampleInputPassword1">Poids (Kg):</label>
-                    <input type="number" name="poids" class="form-control" id="exampleInputEmail1" placeholder="Poids en Kg">
+                    <input type="number" name="poids'.$i.'" class="form-control" id="exampleInputEmail1" placeholder="Poids en Kg">
                   </div>
                   
 
                   <div class="form-group">
                     <label for="exampleInputPassword1">Mission:'.$nom.'</label>
-                    <input type="text" name="mission_id" class="form-control" id="exampleInputEmail1" placeholder="mission_id" value="'.$id.'" >
-
+                    <input type="text" name="mission_id'.$i.'" class="form-control" id="exampleInputEmail1" placeholder="mission_id" value="'.$id.'" hidden>
+                    <input type="text" name="nombreAstro" class="form-control" id="exampleInputEmail1" placeholder="mission_id" value="'.$nombreAstro.'" hidden>
                   </div>
 
                 </div>
