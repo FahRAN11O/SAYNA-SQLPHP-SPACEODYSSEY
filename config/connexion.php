@@ -1,6 +1,6 @@
 <?php
 
-require ('database.php');
+require_once ('database.php');
 
 	
 // Paramétres de connexion à la base de données

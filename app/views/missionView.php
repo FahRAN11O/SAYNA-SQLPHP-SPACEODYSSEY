@@ -6,8 +6,9 @@ $pathAdminlte = /*realpath(__DIR__ . */'../../www/dist/css/adminlte.min.css'/*)*
 
 include 'header.php';
 require_once('../models/missions.php');
+require_once('../models/vaisseaux.php');
 ?>
-<a href="./forms/missionForm.php">Creer Mission</a>
+<a href="./forms/missionForm.php"><h2>Creer Mission</h2></a>
 
 <div class="card-header">
                 <h3 class="card-title">Liste des missions</h3>
@@ -25,17 +26,24 @@ require_once('../models/missions.php');
                   </thead>
                   <tbody>
                   <?php
+
+                  //Crée une tableau en php
                     $odd = true;
                         $missions = new Missions();
                         $missionList = $missions->allMissions();
+                        $vaisseau = new Vaisseaux();
                         foreach ($missionList as $mission) {
                           
                           $class = $odd ? "odd" : "even";
-                          
+                          $listVaisseaux =  $vaisseau->getNomVaisseau($mission['vaisseau_id']);
+                          foreach ($listVaisseaux as $value) {
+                            $nomVaisseau = $value['nom'];
+                          }
+
                         echo '<tr class="'.$odd.'" >
                         <td class="dtr-control sorting_1" tabindex="0"><a href="">'.$mission['nom'].'</a></td>
                         <td>'.$mission['objectif'].'</td>
-                        <td><a href="">'.$mission['vaisseau_id'].'</a></td>
+                        <td><a href="">'.$nomVaisseau.'</a></td>
                         <td>'.$mission['status_mission'].'</td>
                         <td>RP6778</td>
                         <td><a href="">Listes Astronautes</a></td>
