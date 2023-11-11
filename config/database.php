@@ -1,5 +1,5 @@
 <?php
 const DB_HOST = 'localhost';
-const DB_USER = 'stellar';
+const DB_USER = 'root';
 const DB_NAME = 'stellar';
-const DB_PASSWORD = 'stellar';
+const DB_PASSWORD = '';

@@ -4,6 +4,8 @@ $pathAllmin = /*realpath(__DIR__ . */'../../../www/plugins/fontawesome-free/css/
 $pathAdminlte = /*realpath(__DIR__ . */'../../../www/dist/css/adminlte.min.css'/*)*/;
 
 include '../header.php';
+
+require_once('../../models/vaisseaux.php');
 ?>
       <div class="container-fluid">
         <div class="row">
@@ -36,8 +38,15 @@ include '../header.php';
                   <div class="form-group">
                     <label for="exampleInputPassword1">Vaisseaux:</label>
                     <select name="" id="">
-                      <option value="1">XPART3454</option>
-                      <option value="2">GF6785</option>
+                      <?php
+                        $vaisseaux = new Vaisseaux();
+                        $vaisseauxList = $vaisseaux->allVaisseaux();
+                        foreach ($vaisseauxList as $vaisseau) {
+                          echo '<option value="'.$vaisseau['id'].'">'.$vaisseau['nom'].'</option>';
+                        }
+                      ?>
+                      <!--<option value="1">XPART3454</option>
+                      <option value="2">GF6785</option>-->
                     </select>
                   </div>
 
@@ -54,10 +63,10 @@ include '../header.php';
                   <div class="form-group">
                     <label for="exampleInputPassword1">Status:</label> 
                     <select name="" id="">
-                      <option value="1">Debut</option>
-                      <option value="2">En cours</option>
-                      <option value="1">Fini</option>
-                      <option value="2">Abandoné</option>
+                      <option value="debut">Debut</option>
+                      <option value="encours">En cours</option>
+                      <option value="fini">Fini</option>
+                      <option value="abandonne">Abandonné</option>
                     </select>
                   </div>
 

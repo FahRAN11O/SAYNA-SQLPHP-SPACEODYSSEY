@@ -1,13 +1,15 @@
 <?php
 class Vaisseaux{
+
+
     private $nom;
     private $reference;
     private $capacite;
     private $vitesse;
     private $autonomie;
 
-
     public function getNom(){
+
         return $this->vaisseau;
     }
 
@@ -47,7 +49,26 @@ class Vaisseaux{
         $this->autonomie = $autonomie;
     }
 
-    function listeVaisseauxLibres(){
+    public function allVaisseaux(){
+        require('../../../config/connexion.php');
+    try{  
+        $requete = "SELECT * FROM vaisseaux;";
+        $statement = $pdo->prepare($requete);
+
+        //Executez la requête
+        $statement->execute();
+
+        $allVaisseau = $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $allVaisseau;
+
+    }catch(PDOException $e){
+        //En cas d'erreur de connexion, affichage du message d'erreur
+        echo 'Erreur de connexion : '. $e->getMessage();
+    }
+
+    }
+
+    public function listeVaisseauxLibres(){
         return $VaisseauxLibres;
     }
 
