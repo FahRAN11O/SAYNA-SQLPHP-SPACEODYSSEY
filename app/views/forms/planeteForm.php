@@ -18,21 +18,21 @@ require_once('../../models/vaisseaux.php');
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form id="quickForm" novalidate="novalidate" method="POST" action="../../controllers/missionController.php">
+              <form id="quickForm" novalidate="novalidate" method="POST" action="../../controllers/planeteController.php">
                 <div class="card-body">
                   <div class="form-group">
                     <label for="exampleInputEmail1">Planete:</label>
-                    <input type="text" name="nomMission" class="form-control" id="exampleInputEmail1" placeholder="Entre le nom">
+                    <input type="text" name="nom" class="form-control" id="exampleInputEmail1" placeholder="Entre le nom">
                   </div>
 
                   <div class="form-group">
                     <label for="exampleInputEmail1">Circonference:</label>
-                    <input type="text" name="objectifMission" class="form-control" id="exampleInputEmail1" placeholder="L'objectif du mission">
+                    <input type="text" name="circonference" class="form-control" id="exampleInputEmail1" placeholder="L'objectif du mission">
                   </div>
 
                   <div class="form-group">
                     <label for="exampleInputEmail1">Distance à la terre:</label>
-                    <input type="text" name="objectifMission" class="form-control" id="exampleInputEmail1" placeholder="L'objectif du mission">
+                    <input type="text" name="distance" class="form-control" id="exampleInputEmail1" placeholder="L'objectif du mission">
                   </div>
                 </div>
                 <!-- /.card-body -->

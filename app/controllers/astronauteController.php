@@ -28,10 +28,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                         $anneeService, $nationalite, $etatSante,
                                         $taille, $poids, $missionId);
 
-        }
-
-
-        
-        
+        }    
     }    
 ?>
