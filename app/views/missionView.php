@@ -53,9 +53,9 @@ require_once('../models/planetes.php');
                   echo '<tr class="'.$odd.'" >
                   <td class="dtr-control sorting_1" tabindex="0"><a href="astronauteView.php?id='.$mission['id'].'">'.$mission['nom'].'</a></td>
                   <td>'.$mission['objectif'].'</td>
-                  <td><a href="">'.$nomVaisseau.'</a></td>
+                  <td>'.$nomVaisseau.'</td>
                   <td>'.$mission['status_mission'].'</td>
-                  <td><a href="">'.$nomPlanet.'</a></td>
+                  <td>'.$nomPlanet.'</td>
                   <td><a href="astronauteView.php?id='.$mission['id'].'">Infos Astronautes</a></td>
                    </tr>';
                     

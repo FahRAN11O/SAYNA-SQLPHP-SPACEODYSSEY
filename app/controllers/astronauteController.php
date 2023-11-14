@@ -28,6 +28,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                         $anneeService, $nationalite, $etatSante,
                                         $taille, $poids, $missionId);
 
-        }    
+        } 
+
+                echo '<h1 >Astronaute ajouté. Voir sur  <a href="/StellarTech/app/views/missionView.php">liste planetes</a>  <h1>  ';
+   
     }    
 ?>

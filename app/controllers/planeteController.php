@@ -12,6 +12,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
         $planete = new Planetes();
         $planete->ajouterPlanete($nom, $circonference, $distance);
-
+        echo '<h1 >Planete ajouté. Voir sur  <a href="/StellarTech/app/views/planeteView.php">liste planetes</a>  <h1>  ';
     }    
 ?>
