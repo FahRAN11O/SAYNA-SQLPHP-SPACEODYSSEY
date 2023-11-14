@@ -38,6 +38,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       </a>
       <a href="/StellarTech/www/">Accueil</a>
       <a href="/StellarTech/app/views/missionView.php">Mission</a>
+      <a href="/StellarTech/app/views/planeteView.php">Planetes</a>
     </div>  
     <div class="collapse navbar-collapse order-3" id="navbarCollapse">
         

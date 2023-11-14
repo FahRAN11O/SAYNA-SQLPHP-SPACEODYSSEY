@@ -6,6 +6,8 @@ $pathAdminlte = /*realpath(__DIR__ . */'../../../www/dist/css/adminlte.min.css'/
 include '../header.php';
 
 require_once('../../models/vaisseaux.php');
+
+require_once('../../models/planetes.php');
 ?>
       <div class="container-fluid">
         <div class="row">
@@ -31,6 +33,23 @@ require_once('../../models/vaisseaux.php');
                   </div>
 
                   <div class="form-group">
+                    <label for="exampleInputPassword1">Planete:</label>
+                    <select name="planeteId" id="">
+                      <?php
+                        $planetes = new Planetes();
+                        
+                        $planeteList = $planetes->allPlanetesLibre();
+                        //var_dump($planeteList);
+                        foreach ($planeteList as $planete) {
+                          echo '<option value="'.$planete['id'].'">'.$planete['nom'].'</option>';
+                        }
+                      ?>
+                      <!--<option value="1">XPART3454</option>
+                      <option value="2">GF6785</option>-->
+                    </select>
+                  </div>
+
+                  <div class="form-group">
                     <label for="exampleInputPassword1">Nombre Astronautes:</label>
                     <input type="number" name="nombreAstro" class="form-control" id="exampleInputEmail1" placeholder="Nombre des Astronautes">
                   </div>
@@ -40,9 +59,9 @@ require_once('../../models/vaisseaux.php');
                     <select name="vaisseauMission" id="">
                       <?php
                         $vaisseaux = new Vaisseaux();
-                        $vaisseauxList = $vaisseaux->allVaisseaux();
+                        $vaisseauxList = $vaisseaux->allVaisseauxLibre();
                         foreach ($vaisseauxList as $vaisseau) {
-                          echo '<option value="'.$vaisseau['id'].'">'.$vaisseau['nom'].'</option>';
+                          echo '<option value="'.$vaisseau['id'].'">'.$vaisseau['nom'].'(capacité:'.$vaisseau["capacite"].')</option>';
                         }
                       ?>
                       <!--<option value="1">XPART3454</option>

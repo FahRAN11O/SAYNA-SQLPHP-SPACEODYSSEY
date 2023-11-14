@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : sam. 11 nov. 2023 à 14:44
+-- Généré le : mar. 14 nov. 2023 à 22:41
 -- Version du serveur : 10.4.28-MariaDB
 -- Version de PHP : 8.2.4
 
@@ -36,7 +36,7 @@ CREATE TABLE `astronautes` (
   `etat_sante` varchar(255) DEFAULT NULL,
   `taille` int(11) DEFAULT NULL,
   `poids` double DEFAULT NULL,
-  `mission_id` int(11) DEFAULT NULL,
+  `mission_id` int(11) NOT NULL,
   `date_naissance` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -45,7 +45,8 @@ CREATE TABLE `astronautes` (
 --
 
 INSERT INTO `astronautes` (`id`, `nom`, `prenom`, `nationalite`, `annee_service`, `etat_sante`, `taille`, `poids`, `mission_id`, `date_naissance`) VALUES
-(0, 'Peter', 'Check', 'Anglais', 9, 'Bien', 185, 73, 19, '1983-09-14 00:00:00');
+(30, 'RAKOTO', 'Mahavita', 'Malagasy', 7, 'Bien', 179, 69, 60, '1977-03-12 00:00:00'),
+(31, 'RABE', 'Mazoto', 'Malagasy', 8, 'Bien', 181, 70, 60, '1981-09-12 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -70,16 +71,10 @@ CREATE TABLE `missions` (
 --
 
 INSERT INTO `missions` (`id`, `nom`, `objectif`, `date_debut`, `date_fin`, `status_mission`, `cout`, `vaisseau_id`, `planete_id`) VALUES
-(1, 'SpaceZ', 'explorer le planete K56', '2023-11-10 21:00:00', '2024-12-20 00:00:00', 'debut', NULL, 2, NULL),
-(2, 'SpaceY', 'explorer le planete TN64', '2022-07-08 21:00:00', '2024-01-18 00:00:00', 'encours', NULL, 1, NULL),
-(3, 'ExploR', 'explorer la planete 56K43', '2010-11-07 21:00:00', '2012-10-16 00:00:00', 'abandonne', NULL, 1, NULL),
-(4, 'FLYW', 'explorer la planet KP2787J', '2021-06-08 21:00:00', '2022-09-13 00:00:00', 'fini', NULL, 3, NULL),
-(5, 'FLYW', 'explorer la planet KP2787J', '2021-06-08 21:00:00', '2022-09-13 00:00:00', 'fini', NULL, 3, NULL),
-(14, 'Heavy', 'explorer la planete V67K43', '2023-11-21 21:00:00', '2024-12-11 00:00:00', 'Début', NULL, 2, NULL),
-(15, 'LIGHT', 'explorer la planete V67K43', '2023-11-21 21:00:00', '2024-12-11 00:00:00', 'Début', NULL, 3, NULL),
-(19, 'INTERNWZ', 'explorer la planete 67HJ32', '2023-11-10 21:00:00', '2024-11-11 00:00:00', 'Début', NULL, 1, NULL),
-(20, 'INTERNWZ', 'explorer la planete 67HJ32', '2023-11-10 21:00:00', '2024-11-11 00:00:00', 'Début', NULL, 1, NULL),
-(21, 'INTERNWZ', 'explorer la planete 67HJ32', '2023-11-10 21:00:00', '2024-11-11 00:00:00', 'Début', NULL, 1, NULL);
+(60, 'SpaceZ', 'explorer la planete PL001', '2023-11-13 21:00:00', '2024-11-14 00:00:00', 'Début', NULL, 4, 5),
+(61, 'SpaceZ', 'explorer la planete PL001', '2023-11-13 21:00:00', '2024-11-14 00:00:00', 'Début', NULL, 4, 5),
+(63, 'STELL-Z', 'Explorer la planete PL002', '2022-10-11 21:00:00', '2024-08-25 00:00:00', 'En cours', NULL, 11, 6),
+(64, 'STELL-Z', 'Explorer la planete PL002', '2022-10-11 21:00:00', '2024-08-25 00:00:00', 'En cours', NULL, 11, 6);
 
 -- --------------------------------------------------------
 
@@ -91,8 +86,17 @@ CREATE TABLE `planetes` (
   `id` int(11) NOT NULL,
   `nom` varchar(55) DEFAULT NULL,
   `distance_terre` bigint(20) NOT NULL,
-  `circonference` double DEFAULT NULL
+  `circonference` double DEFAULT NULL,
+  `etat` varchar(55) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `planetes`
+--
+
+INSERT INTO `planetes` (`id`, `nom`, `distance_terre`, `circonference`, `etat`) VALUES
+(5, 'PL001', 345000, 25000, 'engage'),
+(6, 'PL002', 125000, 34000, 'engage');
 
 -- --------------------------------------------------------
 
@@ -115,9 +119,17 @@ CREATE TABLE `vaisseaux` (
 --
 
 INSERT INTO `vaisseaux` (`id`, `nom`, `reference`, `capacite`, `vitesse`, `autonomie`, `etat`) VALUES
-(1, 'V-FAST', 'VS44', 5, NULL, NULL, NULL),
-(2, 'SPEED', 'VS77', 6, NULL, NULL, NULL),
-(3, 'LIGHT', 'VS62', 3, NULL, NULL, NULL);
+(4, 'FAST-C', 'VS001', 3, 39000, NULL, 'engage'),
+(5, 'SPEED', 'VS002', 6, 24000, NULL, 'engage'),
+(6, 'HEAVY', 'VS003', 4, 33000, NULL, 'libre'),
+(7, 'LIGHT', 'VS004', 5, 27000, NULL, 'libre'),
+(8, 'LIGHT-XP', 'VS005', 3, 37000, NULL, 'libre'),
+(9, 'DARK-ENGINE', 'VS006', 2, 41000, NULL, 'libre'),
+(10, 'ECLAIR', 'VS007', 7, 36000, NULL, 'libre'),
+(11, '4GEN', 'VS008', 4, 24000, NULL, 'engage'),
+(12, 'LT-SPACE', 'VS009', 5, 30000, NULL, 'libre'),
+(13, 'SKYX', 'VS010', 4, 22000, NULL, 'libre'),
+(14, 'ECLAIR-2GEN', 'VS011', 4, 38000, NULL, 'libre');
 
 --
 -- Index pour les tables déchargées
@@ -155,22 +167,28 @@ ALTER TABLE `vaisseaux`
 --
 
 --
+-- AUTO_INCREMENT pour la table `astronautes`
+--
+ALTER TABLE `astronautes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+
+--
 -- AUTO_INCREMENT pour la table `missions`
 --
 ALTER TABLE `missions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 
 --
 -- AUTO_INCREMENT pour la table `planetes`
 --
 ALTER TABLE `planetes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT pour la table `vaisseaux`
 --
 ALTER TABLE `vaisseaux`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Contraintes pour les tables déchargées

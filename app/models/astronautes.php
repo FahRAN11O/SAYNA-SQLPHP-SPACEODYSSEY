@@ -88,5 +88,24 @@ class Astronautes{
         }
     
         }
+
+        public function allAstronautesParMission($idMission){
+            require('../../config/connexion.php');
+            try{  
+                $requete = "SELECT * FROM astronautes WHERE mission_id='$idMission';";
+                $statement = $pdo->prepare($requete);
+        
+                //Executez la requête
+                $statement->execute();
+        
+                $allAstro = $statement->fetchAll(PDO::FETCH_ASSOC);
+                return $allAstro;
+        
+            }catch(PDOException $e){
+                //En cas d'erreur de connexion, affichage du message d'erreur
+                echo 'Erreur de connexion : '. $e->getMessage();
+            }
+        
+            }
 }
 ?>

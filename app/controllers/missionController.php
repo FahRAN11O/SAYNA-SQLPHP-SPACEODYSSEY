@@ -1,5 +1,7 @@
 <?php
 require_once('../models/missions.php');
+require_once('../models/vaisseaux.php');
+require_once('../models/planetes.php');
 
     // Incluez le fichier en utilisant le chemin absolu
 $pathAllmin = /*realpath(__DIR__ . */'../../www/plugins/fontawesome-free/css/all.min.css'/*)*/;
@@ -10,25 +12,37 @@ $pathAdminlte = /*realpath(__DIR__ . */'../../www/dist/css/adminlte.min.css'/*)*
         $missionInstance = new Missions();
         $nom = $_POST["nomMission"];
         $objectif = $_POST["objectifMission"];
+        $planeteId = $_POST["planeteId"];
         $nombreAstro=$_POST["nombreAstro"];
         $vaisseau=$_POST["vaisseauMission"];
         $dateDebut = $_POST["dateDebut"];
         $dateFin = $_POST["dateFin"];
         $status = $_POST["status"];
 
-
         $idMissionKey=$missionInstance->getId($nom, $objectif);
+
+        //Changer l'état du vaisseaux en occupé
+        $vaisseaux = new Vaisseaux();
+        //if($status!='fini' && $status!='abandonné'){
+        $vaisseaux->changerEtatVaisseaux($vaisseau);
+       // }
+
+        //Changer l'état du planete en Engagé
+        $planete = new Planetes();
+        $planete->changerEtatPlanete($planeteId);
+
+       $id=null;
+        //For each pour avoir les id's des missions afin de le transferer au AstronauteForm
         foreach ($idMissionKey as $missionKey) {
             $id = $missionKey["id"];
-          }
         $mission = new Missions();
-        $mission->creerMission($nom, $objectif, $vaisseau, $dateDebut, $dateFin, $status);
+        $mission->creerMission($nom, $objectif, $vaisseau, $dateDebut, $dateFin, $status,$planeteId);
 
 
 
     include '../views/header.php';
 
-
+//var_dump($planeteId);
      echo ' <div class="container-fluid">
         <div class="row">
           <!-- left column -->
@@ -42,7 +56,8 @@ $pathAdminlte = /*realpath(__DIR__ . */'../../www/dist/css/adminlte.min.css'/*)*
               <!-- form start -->
               <form id="quickForm" novalidate="novalidate" method="POST" action="astronauteController.php">
                 ';
-                for ($i=1; $i <$nombreAstro+1 ; $i++) { 
+
+                for ($i=1; $i <intval($nombreAstro)+1 ; $i++) { 
                 echo' 
                 <h1 class="m-0">Astronaute numero :'.$i.'</h1>
                 <div class="card-body">
@@ -96,7 +111,7 @@ $pathAdminlte = /*realpath(__DIR__ . */'../../www/dist/css/adminlte.min.css'/*)*
 
                   <div class="form-group">
                     <label for="exampleInputPassword1">Mission:'.$nom.'</label>
-                    <input type="text" name="mission_id'.$i.'" class="form-control" id="exampleInputEmail1" placeholder="mission_id" value="'.$id.'" hidden>
+                    <input type="text" name="mission_id'.$i.'" class="form-control" id="exampleInputEmail1" placeholder="mission_id" value="'.$id.'" >
                     <input type="text" name="nombreAstro" class="form-control" id="exampleInputEmail1" placeholder="mission_id" value="'.$nombreAstro.'" hidden>
                   </div>
 
@@ -128,6 +143,7 @@ $pathAdminlte = /*realpath(__DIR__ . */'../../www/dist/css/adminlte.min.css'/*)*
 ';
 
 
+}
 
 
     }

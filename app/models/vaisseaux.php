@@ -90,6 +90,39 @@ class Vaisseaux{
     public function listeVaisseauxLibres(){
         return $VaisseauxLibres;
     }
+    
+        public function changerEtatVaisseaux($id){
+            try{
+                require('../../config/connexion.php');
+               
+               $query = "UPDATE vaisseaux SET etat = 'engage' WHERE id = '$id';";
+        
+                $pdo->query($query);
+            }catch(PDOException $e){
+                //En cas d'erreur de connexion, affichage du message d'erreur
+                echo 'Erreur de connexion : '. $e->getMessage();
+            }
+        }
+
+
+        public function allVaisseauxLibre(){
+            require('../../../config/connexion.php');
+            try{  
+                $requete = "SELECT * FROM vaisseaux WHERE etat='libre';";
+                $statement = $pdo->prepare($requete);
+        
+                //Executez la requête
+                $statement->execute();
+        
+                $allVaisseauxLibres = $statement->fetchAll(PDO::FETCH_ASSOC);
+                return $allVaisseauxLibres;
+        
+            }catch(PDOException $e){
+                //En cas d'erreur de connexion, affichage du message d'erreur
+                echo 'Erreur de connexion : '. $e->getMessage();
+            }
+        
+            }
 
 
 

@@ -7,6 +7,8 @@ $pathAdminlte = /*realpath(__DIR__ . */'../../www/dist/css/adminlte.min.css'/*)*
 include 'header.php';
 require_once('../models/missions.php');
 require_once('../models/vaisseaux.php');
+require_once('../models/planetes.php');
+
 ?>
 <a href="./forms/missionForm.php"><h2>Creer Mission</h2></a>
 
@@ -28,28 +30,39 @@ require_once('../models/vaisseaux.php');
                   <?php
 
                   //Crée une tableau en php
-                    $odd = true;
-                        $missions = new Missions();
-                        $missionList = $missions->allMissions();
-                        $vaisseau = new Vaisseaux();
-                        foreach ($missionList as $mission) {
-                          
-                          $class = $odd ? "odd" : "even";
-                          $listVaisseaux =  $vaisseau->getNomVaisseau($mission['vaisseau_id']);
-                          foreach ($listVaisseaux as $value) {
-                            $nomVaisseau = $value['nom'];
-                          }
+                  $odd = true;
+                  $missions = new Missions();
+                  $planetes = new Planetes();
+                  $missionList = $missions->allMissions();
+                  $planeteList = $planetes->allPlanetes();
+                  $vaisseau = new Vaisseaux();
+                  foreach ($missionList as $mission) {
+                    
+                    $class = $odd ? "odd" : "even";
+                    $listVaisseaux =  $vaisseau->getNomVaisseau($mission['vaisseau_id']);
+                    foreach ($listVaisseaux as $value) {
+                      $nomVaisseau = $value['nom'];
 
-                        echo '<tr class="'.$odd.'" >
-                        <td class="dtr-control sorting_1" tabindex="0"><a href="">'.$mission['nom'].'</a></td>
-                        <td>'.$mission['objectif'].'</td>
-                        <td><a href="">'.$nomVaisseau.'</a></td>
-                        <td>'.$mission['status_mission'].'</td>
-                        <td>RP6778</td>
-                        <td><a href="">Listes Astronautes</a></td>
-                         </tr>';
-                        
-                        }
+                      
+                    }
+                    $nomPlanet = null;
+                    $listPlanetes =  $planetes->getNomPlanete($mission['planete_id']);
+                    foreach ($listPlanetes as $values) {
+                      $nomPlanet = $values['nom'];
+                    }
+                  echo '<tr class="'.$odd.'" >
+                  <td class="dtr-control sorting_1" tabindex="0"><a href="astronauteView.php?id='.$mission['id'].'">'.$mission['nom'].'</a></td>
+                  <td>'.$mission['objectif'].'</td>
+                  <td><a href="">'.$nomVaisseau.'</a></td>
+                  <td>'.$mission['status_mission'].'</td>
+                  <td><a href="">'.$nomPlanet.'</a></td>
+                  <td><a href="astronauteView.php?id='.$mission['id'].'">Infos Astronautes</a></td>
+                   </tr>';
+                    
+                  
+                  
+                }
+
 
                       ?>
 

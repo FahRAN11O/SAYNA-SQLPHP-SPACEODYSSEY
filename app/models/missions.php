@@ -30,6 +30,27 @@ class Missions{
         }
     }
 
+
+
+    public function getNomMission($id){
+        require('../../config/connexion.php');
+        try{  
+            $requete = "SELECT nom FROM missions WHERE id = '$id';";
+            $statement = $pdo->prepare($requete);
+    
+            //Executez la requête
+            $statement->execute();
+    
+            $nom = $statement->fetchAll(PDO::FETCH_ASSOC);
+            return $nom;
+            $statement->close();
+    
+        }catch(PDOException $e){
+            //En cas d'erreur de connexion, affichage du message d'erreur
+            echo 'Erreur de connexion : '. $e->getMessage();
+        }
+    }
+
     public function getNom(){
         return $this->nom;
     }
@@ -86,12 +107,12 @@ class Missions{
         $this->planete=$planete;
     }
 
-    public function creerMission($nomMission, $objectif, $vaisseau, $dateDebut, $dateFin, $status){
+    public function creerMission($nomMission, $objectif, $vaisseau, $dateDebut, $dateFin, $status, $planete){
     try{
         require('../../config/connexion.php');
        
-       $query = "INSERT INTO missions (nom, objectif, vaisseau_id, date_debut, date_fin,status_mission ) 
-        VALUES ('$nomMission','$objectif','$vaisseau','$dateDebut','$dateFin','$status');";
+       $query = "INSERT INTO missions (nom, objectif, vaisseau_id, date_debut, date_fin,status_mission, planete_id ) 
+        VALUES ('$nomMission','$objectif','$vaisseau','$dateDebut','$dateFin','$status', '$planete');";
 
         $pdo->query($query);
     }catch(PDOException $e){
